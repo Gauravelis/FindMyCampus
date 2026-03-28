@@ -1,0 +1,106 @@
+{
+  "placeholderImages": [
+    {
+      "id": "home-hero",
+      "description": "A grand university campus with a large central building and a sprawling green lawn where students are gathered.",
+      "imageUrl": "https://images.unsplash.com/photo-1576495199011-eb94736d05d6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx1bml2ZXJzaXR5JTIwY2FtcHVzfGVufDB8fHx8MTc1OTI4NzYwNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "university campus"
+    },
+    {
+      "id": "college-1-hero",
+      "description": "Modern architecture of a technology institute at sunset.",
+      "imageUrl": "https://images.unsplash.com/photo-1610967999370-080d066b4543?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtb2Rlcm4lMjB1bml2ZXJzaXR5fGVufDB8fHx8MTc1OTE5NjQ3NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern university"
+    },
+    {
+      "id": "college-1-gallery-1",
+      "description": "Students collaborating in a state-of-the-art computer lab.",
+      "imageUrl": "https://images.unsplash.com/photo-1553632168-eb4237620881?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb21wdXRlciUyMGxhYnxlbnwwfHx8fDE3NTkzMDA5MjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "computer lab"
+    },
+    {
+      "id": "college-1-gallery-2",
+      "description": "A bustling library with students studying.",
+      "imageUrl": "https://images.unsplash.com/photo-1752920299210-0b727800ea50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxsaWJyYXJ5JTIwc3R1ZGVudHN8ZW58MHx8fHwxNzU5Mjc0NjY1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "library students"
+    },
+    {
+      "id": "college-1-gallery-3",
+      "description": "Robotics club members working on a project.",
+      "imageUrl": "https://images.unsplash.com/photo-1581916459131-90da1f9c7162?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxyb2JvdGljcyUyMGNsdWJ8ZW58MHx8fHwxNzU5MjIxNzY1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "robotics club"
+    },
+    {
+      "id": "college-2-hero",
+      "description": "Traditional Indian architecture of a university of arts.",
+      "imageUrl": "https://images.unsplash.com/photo-1621494518757-f6b0b7c099fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx0cmFkaXRpb25hbCUyMGJ1aWxkaW5nfGVufDB8fHx8MTc1OTMwMDkyM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "traditional building"
+    },
+    {
+      "id": "college-2-gallery-1",
+      "description": "A student painting on a canvas in a bright studio.",
+      "imageUrl": "https://images.unsplash.com/photo-1611248293543-e71973f8b94b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxhcnQlMjBzdHVkaW98ZW58MHx8fHwxNzU5MjEwODA0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "art studio"
+    },
+    {
+      "id": "college-2-gallery-2",
+      "description": "Outdoor theatre with a drama performance in progress.",
+      "imageUrl": "https://images.unsplash.com/photo-1647386329892-19c308290a24?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvdXRkb29yJTIwdGhlYXRyZXxlbnwwfHx8fDE3NTkzMDA5MjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "outdoor theatre"
+    },
+    {
+      "id": "college-2-gallery-3",
+      "description": "Students practicing on sitars in a music room.",
+      "imageUrl": "https://images.unsplash.com/photo-1611262052897-865202d7ad42?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtdXNpYyUyMHJvb218ZW58MHx8fHwxNzU5MzAwOTIzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "music room"
+    },
+    {
+      "id": "college-3-hero",
+      "description": "A sprawling business school campus with a water feature in front.",
+      "imageUrl": "https://images.unsplash.com/photo-1492538368677-f6e0afe31dcc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHNjaG9vbHxlbnwwfHx8fDE3NTkzMDA5MjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "business school"
+    },
+    {
+      "id": "college-3-gallery-1",
+      "description": "A lecture hall with a professor giving a presentation.",
+      "imageUrl": "https://images.unsplash.com/photo-1640416639872-93aabd8d91d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxsZWN0dXJlJTIwaGFsbHxlbnwwfHx8fDE3NTkyNTk5NTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "lecture hall"
+    },
+    {
+      "id": "college-3-gallery-2",
+      "description": "Students in business attire shaking hands.",
+      "imageUrl": "https://images.unsplash.com/photo-1551283267-9eebeaf9989b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHN0dWRlbnRzfGVufDB8fHx8MTc1OTMwMDkyM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "business students"
+    },
+    {
+      "id": "college-4-hero",
+      "description": "A medical college and hospital building.",
+      "imageUrl": "https://images.unsplash.com/photo-1618245596888-2fa0c17d4cec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtZWRpY2FsJTIwY29sbGVnZXxlbnwwfHx8fDE3NTkzMDA5MjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "medical college"
+    },
+    {
+      "id": "college-5-hero",
+      "description": "National law school with classical architecture and pillars.",
+      "imageUrl": "https://images.unsplash.com/photo-1668239596261-62f94059533e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxsYXclMjBzY2hvb2x8ZW58MHx8fHwxNzU5MzAwOTIzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "law school"
+    },
+    {
+      "id": "login-bg",
+      "description": "A quiet and elegant library with rows of bookshelves and warm lighting, creating a studious and serene atmosphere.",
+      "imageUrl": "https://images.unsplash.com/photo-1683871268982-a19153dbb35d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxsaWJyYXJ5JTIwYmFja2dyb3VuZHxlbnwwfHx8fDE3NTkzMDA5MjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "library background"
+    },
+    {
+      "id": "award-1",
+      "description": "Gold medal for academic excellence",
+      "imageUrl": "https://images.unsplash.com/photo-1698369778928-9153537f1c2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Z29sZCUyMG1lZGFsfGVufDB8fHx8MTc1OTE4NDMzOHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "gold medal"
+    },
+    {
+      "id": "award-2",
+      "description": "Trophy for best research paper",
+      "imageUrl": "https://images.unsplash.com/photo-1724927080035-bb6e95449984?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx0cm9waHklMjBhd2FyZHxlbnwwfHx8fDE3NTkyNjgyMzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "trophy award"
+    }
+  ]
+}
