@@ -1,95 +1,59 @@
-'use server';
+'use server'
 
-import { revalidatePath } from 'next/cache';
-import type { College } from './types';
-import { colleges, saveColleges, loadColleges, getCollegeById } from './data';
-import { addUser, getUsers as serverGetUsers, deleteUser as deleteUserFromFile } from './users';
+import pool from '@/lib/mysql'; 
 
-function generateId(name: string) {
-    return name.toLowerCase().replace(/\s+/g, '-');
-}
-
-export async function createCollege(formData: Omit<College, 'id' | 'createdAt' | 'updatedAt'>) {
-  await loadColleges();
-  const newCollege: College = {
-    id: generateId(formData.name),
-    ...formData,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  };
-
-  colleges.unshift(newCollege);
-  await saveColleges(colleges);
+// Action for SignupForm.tsx
+export async function createUser(userData: {
+  name: string;
+  email: string;
+  password?: string;
+  contact?: string; 
+}): Promise<{ success: boolean; id?: number; error?: string }> {
+  // We provide a fallback string for password so mysql2 doesn't crash if it's undefined
+  const { name, email, password = '' } = userData;
   
-  revalidatePath('/admin');
-  revalidatePath('/');
-  revalidatePath(`/colleges/${newCollege.id}`);
-
-  return newCollege;
-}
-
-export async function updateCollege(id: string, formData: Omit<College, 'id' | 'createdAt' | 'updatedAt'>) {
-  await loadColleges();
-  const collegeIndex = colleges.findIndex((c) => c.id === id);
-
-  if (collegeIndex === -1) {
-    throw new Error('College not found');
+  try {
+    // Safely cast the database response to an array to keep TypeScript happy
+    const [result] = (await pool.query(
+      'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
+      [name, email, password] 
+    )) as any[];
+    
+    return { success: true, id: result.insertId };
+  } catch (error) {
+    console.error('Database Error:', error);
+    return { success: false, error: 'Failed to create user.' };
   }
-
-  const existingCollege = colleges[collegeIndex];
-
-  const updatedCollege: College = {
-    ...existingCollege,
-    ...formData,
-    id, // Ensure ID is not changed
-    updatedAt: new Date(),
-  };
-
-  colleges[collegeIndex] = updatedCollege;
-  await saveColleges(colleges);
-  
-  revalidatePath('/admin');
-  revalidatePath('/');
-  revalidatePath(`/colleges/${id}`);
-
-  return updatedCollege;
 }
 
-export async function deleteCollege(id: string) {
-  await loadColleges();
-  const collegeIndex = colleges.findIndex((c) => c.id === id);
-
-  if (collegeIndex === -1) {
-    throw new Error('College not found');
-  }
-
-  colleges.splice(collegeIndex, 1);
-  await saveColleges(colleges);
-  
-  revalidatePath('/admin');
-  revalidatePath('/');
-}
-
-export async function getCollegeByIdAction(id: string) {
-    return getCollegeById(id);
-}
-
-// user-related actions
-export async function createUser(data: {
+// Action for LoginForm.tsx
+export async function loginUser(username: string, password?: string): Promise<{
+  success: boolean;
+  user?: {
+    id: number;
     name: string;
     email: string;
-    password?: string;
-}) {
-    const user = await addUser(data);
-    revalidatePath('/admin');
-    return user;
-}
+  };
+  error?: string;
+}> {
+  try {
+    // We use password || '' so we never pass 'undefined' into the MySQL query
+    const [rows] = (await pool.query(
+      'SELECT * FROM users WHERE name = ? AND password = ?',
+      [username, password || '']
+    )) as any[];
 
-export async function getUsersAction() {
-    return serverGetUsers();
-}
-
-export async function deleteUser(userId: string) {
-    await deleteUserFromFile(userId);
-    revalidatePath('/admin');
+    if (rows && rows.length > 0) {
+      const user = rows[0];
+      return { 
+        success: true, 
+        user: { id: user.id, name: user.name, email: user.email } 
+      };
+    } else {
+      return { success: false, error: 'Invalid credentials' };
+    }
+  } catch (error) {
+    console.error('Database Error:', error);
+    return { success: false, error: 'Database connection failed' };
+  }
 }

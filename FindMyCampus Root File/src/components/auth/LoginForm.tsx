@@ -26,7 +26,8 @@ import { Loader2, LogIn } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { getUsersAction } from '@/lib/actions';
+// Update the import to use the new server action we created
+import { loginUser } from '@/lib/actions';
 
 const formSchema = z.object({
   username: z.string().min(1, { message: "Please enter your username." }),
@@ -52,6 +53,7 @@ export default function LoginForm() {
     try {
       await new Promise(resolve => setTimeout(resolve, 800));
 
+      // Admin bypass check 
       if (values.username === "admin" && values.password === "root") {
           toast({
               title: "Admin Login Successful",
@@ -64,24 +66,26 @@ export default function LoginForm() {
           return;
       }
 
-      const allUsers: any[] = await getUsersAction();
-      const matched = allUsers.find(u => u.name === values.username && u.password === values.password);
+      // Check credentials against MySQL
+      const response = await loginUser(values.username, values.password);
 
-      if (!matched) {
-        toast({
-          variant: 'destructive',
-          title: 'Login Failed',
-          description: 'Username or password is incorrect.',
-        });
-      } else {
+      // Check response.success explicitly
+      if (response.success && response.user) {
         toast({
             title: "Login Successful",
             description: "Welcome back!",
         });
         localStorage.setItem('isAuthenticated', 'user');
-        localStorage.setItem('username', values.username);
+        localStorage.setItem('username', response.user.name);
         router.push('/');
         router.refresh();
+      } else {
+        // If success is false, show the error
+        toast({
+          variant: 'destructive',
+          title: 'Login Failed',
+          description: response.error || 'Username or password is incorrect.',
+        });
       }
     } catch (error) {
       console.error(error);
@@ -94,7 +98,6 @@ export default function LoginForm() {
       setIsLoading(false);
     }
   }
-
   return (
     <Card className="w-full max-w-sm z-10 shadow-2xl bg-card/90 backdrop-blur-sm">
       <CardHeader>
