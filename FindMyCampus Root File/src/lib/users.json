@@ -1,13 +1,5 @@
 [
   {
-    "id": "1",
-    "name": "Prathamesh Arun Dike",
-    "email": "prathameshdike1122@gmail.com",
-    "password": "123456",
-    "contact": "8530164530",
-    "createdAt": "2026-03-23T08:16:04.236Z"
-  },
-  {
     "id": "2",
     "name": "Gaurav Prakash Elis",
     "email": "gauravelis@gmail.com",

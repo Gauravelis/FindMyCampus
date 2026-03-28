@@ -43,6 +43,47 @@ export async function saveColleges(updatedColleges: College[]) {
     }
 }
 
+export async function deleteCollege(collegeId: string): Promise<void> {
+    await loadColleges();
+    const index = colleges.findIndex(college => college.id === collegeId);
+    if (index === -1) {
+        throw new Error('College not found');
+    }
+    colleges.splice(index, 1);
+    await saveColleges(colleges);
+}
+
+export async function createCollege(data: Omit<College, 'id' | 'createdAt' | 'updatedAt'>): Promise<College> {
+    await loadColleges();
+    const newCollege: College = {
+        id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        ...data,
+    };
+    colleges.push(newCollege);
+    await saveColleges(colleges);
+    return JSON.parse(JSON.stringify(newCollege));
+}
+
+export async function updateCollege(id: string, updatedData: Partial<Omit<College, 'id' | 'createdAt'>>): Promise<College> {
+    await loadColleges();
+    const index = colleges.findIndex(college => college.id === id);
+    if (index === -1) {
+        throw new Error('College not found');
+    }
+    const existingCollege = colleges[index];
+    const updatedCollege: College = {
+        ...existingCollege,
+        ...updatedData,
+        id: existingCollege.id,
+        createdAt: existingCollege.createdAt,
+        updatedAt: new Date(),
+    };
+    colleges[index] = updatedCollege;
+    await saveColleges(colleges);
+    return JSON.parse(JSON.stringify(updatedCollege));
+}
 
 export async function getColleges(filters: {
   query?: string;
@@ -69,10 +110,12 @@ export async function getColleges(filters: {
     filteredColleges = filteredColleges.filter(college => college.city === filters.city);
   }
   if(filters.minFees !== undefined) {
-    filteredColleges = filteredColleges.filter(college => college.fees >= filters.minFees);
+    const minFees = filters.minFees;
+    filteredColleges = filteredColleges.filter(college => college.fees >= minFees);
   }
   if(filters.maxFees !== undefined) {
-     filteredColleges = filteredColleges.filter(college => college.fees <= filters.maxFees);
+    const maxFees = filters.maxFees;
+     filteredColleges = filteredColleges.filter(college => college.fees <= maxFees);
   }
   if (filters.cutoff !== undefined) {
     filteredColleges = filteredColleges

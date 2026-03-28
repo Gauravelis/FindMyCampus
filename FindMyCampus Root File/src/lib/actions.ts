@@ -1,6 +1,9 @@
 'use server'
 
 import pool from '@/lib/mysql'; 
+import { getCollegeById, deleteCollege as deleteCollegeFromData, createCollege as createCollegeFromData, updateCollege as updateCollegeFromData } from '@/lib/data';
+import { deleteUser as deleteUserFromUsers } from '@/lib/users';
+import type { College } from '@/lib/types';
 
 // Action for SignupForm.tsx
 export async function createUser(userData: {
@@ -56,4 +59,24 @@ export async function loginUser(username: string, password?: string): Promise<{
     console.error('Database Error:', error);
     return { success: false, error: 'Database connection failed' };
   }
+}
+
+export async function getCollegeByIdAction(id: string): Promise<College | undefined> {
+  return await getCollegeById(id);
+}
+
+export async function deleteCollege(id: string): Promise<void> {
+  await deleteCollegeFromData(id);
+}
+
+export async function deleteUser(id: string): Promise<void> {
+  await deleteUserFromUsers(id);
+}
+
+export async function createCollege(data: Omit<College, 'id' | 'createdAt' | 'updatedAt'>): Promise<College> {
+  return await createCollegeFromData(data);
+}
+
+export async function updateCollege(id: string, data: Partial<Omit<College, 'id' | 'createdAt'>>): Promise<College> {
+  return await updateCollegeFromData(id, data);
 }
