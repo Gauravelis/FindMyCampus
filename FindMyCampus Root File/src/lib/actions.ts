@@ -12,14 +12,16 @@ export async function createUser(userData: {
   password?: string;
   contact?: string; 
 }): Promise<{ success: boolean; id?: number; error?: string }> {
-  // We provide a fallback string for password so mysql2 doesn't crash if it's undefined
-  const { name, email, password = '' } = userData;
+  
+  // FIXED: Extracted 'contact' from userData (with null as a fallback if empty)
+  const { name, email, password = '', contact = null } = userData;
   
   try {
-    // Safely cast the database response to an array to keep TypeScript happy
+    // FIXED: Added 'contact' to the columns list and a 4th '?' to VALUES. 
+    // Also added the 'contact' variable to the array at the end.
     const [result] = (await pool.query(
-      'INSERT INTO users (name, email, password) VALUES (?, ?, ?)',
-      [name, email, password] 
+      'INSERT INTO users (name, email, password, contact) VALUES (?, ?, ?, ?)',
+      [name, email, password, contact] 
     )) as any[];
     
     return { success: true, id: result.insertId };

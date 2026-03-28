@@ -36,10 +36,10 @@ export type Course = {
 };
 
 export type User = {
-  id: string;
+  id: string; // Depending on your DB, you might need to change this to 'number' later if you get ID errors
   name: string;
   email: string;
   password?: string; // stored in plain text for demo purposes
-  contact?: string; // contact number for user details
+  contact?: string | null; // <-- UPDATED: Added '| null' to handle MySQL's empty state
   createdAt: Date;
 };
